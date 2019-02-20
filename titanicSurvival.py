@@ -79,6 +79,18 @@ table = pd.crosstab(index=[train_df.Survived,train_df.Pclass] , columns = [train
 table.unstack()
 
 
+table.columns
+table.index
+
+table.columns.set_levels(['Female', 'Male'], level=0, inplace=True)
+table.columns.set_levels(['C','Q','S'], level = 1, inplace=True)
+
+table
+
+print('The median age and mean age of the passangers in the titanic is : '%)
+train_df.Age.mean()
+train_df.Age.median()
+
 
 
 
