@@ -50,8 +50,37 @@ train_df.info()
 
 train_df.info()
 
-train_df.describe(include = ['0'])
+
 
 train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False)
 
 train_df[['Sex']].groupby(['Sex'])
+
+
+#various plots to understand the data.
+sns.factorplot('Pclass',data=train_df,kind='count',hue='Sex' )
+
+sns.factorplot('Sex',data=train_df,kind='count')
+
+sns.factorplot('Cabin',data=train_df,kind='count')
+
+sns.factorplot('Survived',data=train_df,kind='count',hue='Sex')
+
+#indexes of people who did not survive.
+not_survived = train_df[train_df['Survived']== 0]
+
+#no of people whi didnot survive.
+len(not_survived)
+
+not_survived_pvt = not_survived.pivot_table('Survived','Sex','Pclass', margins= True,aggfunc = len)
+
+table = pd.crosstab(index=[train_df.Survived,train_df.Pclass] , columns = [train_df.Sex,train_df.Embarked])
+
+table.unstack()
+
+
+
+
+
+
+
