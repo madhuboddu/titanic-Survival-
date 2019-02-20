@@ -30,6 +30,8 @@ print(train_df.columns.values)
 
 train_df.head()
 
+train_df.info()
+
 #Categorical: Survived, Sex, and Embarked. 
 #Ordinal: Pclas
 
@@ -47,3 +49,9 @@ train_df.head()
 # 4 Find various type of data types of each datas.
 
 train_df.info()
+
+train_df.describe(include = ['0'])
+
+train_df[['Pclass', 'Survived']].groupby(['Pclass'], as_index=False).mean().sort_values(by='Survived', ascending=False)
+
+train_df[['Sex']].groupby(['Sex'])
