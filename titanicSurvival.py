@@ -87,9 +87,31 @@ table.columns.set_levels(['C','Q','S'], level = 1, inplace=True)
 
 table
 
-print('The median age and mean age of the passangers in the titanic is : '%)
-train_df.Age.mean()
-train_df.Age.median()
+print('The median age is  %0.f and mean age is %0.f of the passangers in the titanic. ' % (train_df.Age.median(),
+(train_df.Age.mean() ) ) )
+
+
+train_df['Age'].Describe()
+
+train_df.Age.describe()
+
+train_df['Age'].describe()
+
+
+sum(train_df['Age'].isna())
+
+train_df['Age'].dropna(inplace = True)
+
+sum(train_df['Age'].isna())
+
+age_dist_passengers = sns.distplot(train_df['Age'],hist=True ,vertical = False)
+
+age_dist_passengers.set_title('Age distrubution of passengers')
+
+
+
+
+
 
 
 
