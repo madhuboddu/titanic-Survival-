@@ -90,11 +90,8 @@ table
 print('The median age is  %0.f and mean age is %0.f of the passangers in the titanic. ' % (train_df.Age.median(),
 (train_df.Age.mean() ) ) )
 
-
-train_df['Age'].Describe()
-
 train_df.Age.describe()
-
+#same functinality.
 train_df['Age'].describe()
 
 
@@ -108,8 +105,44 @@ age_dist_passengers = sns.distplot(train_df['Age'],hist=True ,vertical = False)
 
 age_dist_passengers.set_title('Age distrubution of passengers')
 
+train_df['Age'].hist(bins = 100)
+
+def male_female_Child(passenger):
+    age,sex = passenger
+    
+    if age < 16:
+        return 'child'
+    else :
+        return sex
+    
+    
+    
+def male_female_child(passenger):
+    age, sex = passenger
+    
+    if age < 16:
+        return 'child'
+    else:
+        return sex
+    
+
+train_df['person']= train_df[['Age','Sex']].apply(male_female_Child , axis =1)
+
+train_df.describe()
+
+train_df['person']
 
 
+sns.factorplot('Pclass', data=train_df, kind='count', hue='person', order=[1,2,3], 
+               hue_order=['child','female','male'], aspect=2)
+
+
+sns.factorplot('Pclass' , data = train_df , hue = 'person' , hue_order = ['child','male','female'] , kind = 'count' )
+
+train_df.person.value_counts()
+
+sns.factorplot('Pclass' , data = train_df , hue = 'person' , hue_order = ['child', 'male','female'],
+               kind = 'count', col = 'Survived', order = [1,2,3], aspect = 1.25 , size = 5)
 
 
 
